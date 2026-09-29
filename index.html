@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Winter Arc — Premium cinematic personal transformation journal. 85 to 70 KG athletic conditioning, hostel mess nutrition engine, and daily habit discipline.">
+  <meta name="theme-color" content="#0A0A09">
+  <title>WINTER ARC — 85 → 70 KG Transformation Protocol</title>
+
+  <!-- Preload Peddi / Kushti Background Image for Instant Transition -->
+  <link rel="preload" as="image" href="assets/images/peddi-kushti.jpg">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. CINEMATIC OPENING EXPERIENCE
+       Occupies full opening screen on load.
+       Video plays ONLY here. After ENTER, video stops completely.
+       ========================================================================== -->
+  <section class="opening-experience" id="openingExperience" aria-label="Winter Arc Cinematic Opening">
+    <!-- Video Layer (Strictly Matches test_hero_video.js contract) -->
+    <div class="hero-opening-video-wrap">
+      <video id="heroOpeningVideo" class="hero-opening-video" autoplay muted playsinline loop preload="auto">
+        <source src="assets/videos/winter-arc.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+      <button class="btn-hero-unmute" id="btnHeroAudioToggle" type="button" aria-label="Toggle Hero Video Sound">
+        <span id="heroAudioIcon">&#128266;</span> <span id="heroAudioLabel">UNMUTE</span>
+      </button>
+    </div>
+
+    <!-- Opening Content Layer with Interactive Title and Enter Button -->
+    <div class="hero-content-layer opening-content-layer">
+      <div class="opening-title-container">
+        <p class="opening-pre-title" id="openingPreTitle">MAINTAIN DISCIPLINE</p>
+        <h1 class="opening-title" id="openingTitle" role="button" tabindex="0" title="Click to Enter Winter Arc">
+          WINTER ARC
+        </h1>
+        <p class="opening-click-hint" id="openingClickHint">TAP TO ENTER</p>
+      </div>
+
+      <div class="opening-enter-wrap" id="openingEnterWrap">
+        <button class="btn-opening-enter" id="btnOpeningEnter" type="button" aria-label="Enter Winter Arc">
+          [ ENTER ]
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       2. CINEMATIC PHOTOGRAPHIC BACKDROP (PEDDI / KUSHTI IMAGE)
+       Preloaded underneath. Becomes dominant background after ENTER.
+       ========================================================================== -->
+  <div class="cinematic-backdrop-wrap" id="cinematicBackdropWrap" aria-hidden="true">
+    <div class="cinematic-backdrop-image" id="cinematicBackdropImage"></div>
+    <div class="cinematic-backdrop-vignette"></div>
+  </div>
+
+  <!-- ==========================================================================
+       3. MAIN APPLICATION SHELL
+       Fades smoothly into view over the photograph after ENTER.
+       ========================================================================== -->
+  <main class="app-shell" id="appShell">
+
+    <!-- Top Minimal Navigation Header -->
+    <header class="app-header">
+      <div class="brand-badge" id="brandBadgeHome" role="button" tabindex="0" title="Replay Opening Sequence">
+        <div class="brand-emblem" aria-hidden="true">
+          <!-- Kushti Gada Emblem -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M8 5h8M7 9h10M6 13h12M10 17h4"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-title">WINTER ARC</span>
+          <span class="brand-subtitle">85 &rarr; 70 KG JOURNAL</span>
+        </div>
+      </div>
+
+      <!-- Desktop Primary Nav (ACTIVITY, STEPS, FOOD, WATER) -->
+      <nav class="desktop-nav-bar" aria-label="Desktop Navigation">
+        <button class="desk-nav-btn active" data-nav="activity">ACTIVITY</button>
+        <button class="desk-nav-btn" data-nav="steps">STEPS</button>
+        <button class="desk-nav-btn" data-nav="food">FOOD</button>
+        <button class="desk-nav-btn" data-nav="water">WATER</button>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div class="header-status-pill" id="headerStreakPill" title="Consecutive active discipline days">
+          <span class="flame-icon">&bull;</span>
+          <span id="headerStreakText">DAY 01</span>
+        </div>
+        <button class="btn-secondary" id="btnHeaderSettings" style="padding: 6px 10px; font-size: 0.8rem;" title="Arc Settings & Data" data-nav="settings">
+          &#9881;
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Views Container -->
+    <div class="views-container">
+
+      <!-- ========================================================
+           VIEW 1: ACTIVITY (MAIN TRANSFORMATION JOURNAL)
+           Aliased with view-dashboard for comprehensive test compatibility
+           ======================================================== -->
+      <section class="view-section active" id="view-dashboard" data-section-alias="activity">
+
+        <!-- Personal Transformation Journal Header -->
+        <article class="journal-hero">
+          <p class="journal-motto">DISCIPLINE &gt; MOTIVATION</p>
+          <h2 class="journal-main-title">
+            <span>85 KG</span>
+            <span class="arrow">&darr;</span>
+            <span style="color: var(--accent-gold);">70 KG</span>
+          </h2>
+
+          <!-- Weight Metric Strip -->
+          <div class="weight-stat-strip">
+            <div class="stat-item">
+              <span class="stat-label">Current Weight</span>
+              <span class="stat-value highlight" id="dashCurrentWeight">85.0<span class="stat-unit">KG</span></span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Target Weight</span>
+              <span class="stat-value" id="dashTargetWeight">70.0<span class="stat-unit">KG</span></span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Remaining to Drop</span>
+              <span class="stat-value" id="dashRemainingWeight">15.0<span class="stat-unit">KG</span></span>
+            </div>
+          </div>
+
+          <!-- Thin Elegant Journey Progress Track -->
+          <div class="journey-bar-wrapper">
+            <div class="journey-bar-labels">
+              <span>85.0 KG BASELINE</span>
+              <span class="journey-center-badge" id="dashJourneyBadge">15.0 KG JOURNEY</span>
+              <span>70.0 KG ATHLETE</span>
+            </div>
+            <div class="journey-progress-track">
+              <div class="journey-progress-fill" id="dashProgressBar" style="width: 0%;"></div>
+            </div>
+            <div class="journey-milestones">
+              <span id="dashDateToday">Today</span>
+              <span id="dashPercentCompleted">0% Complete</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cohesive 5-Pillar Composition (Large numbers, small labels, minimal lines) -->
+        <div class="pillars-composition">
+          <!-- 1. Steps (Concise summary + mini progress indicator) -->
+          <div class="pillar-stat-block" data-jump="steps" style="cursor: pointer;" title="Open Steps Tracker">
+            <span class="pillar-tag">STEPS</span>
+            <span class="pillar-value" id="homeSummarySteps">0 / 12,000</span>
+            <div class="pillar-mini-progress">
+              <div class="pillar-mini-fill" id="dashStepsMiniFill" style="width: 0%;"></div>
+            </div>
+            <span class="pillar-sub" id="homeSummaryStepsSub">12,000 remaining</span>
+          </div>
+
+          <!-- 2. Water -->
+          <div class="pillar-stat-block" data-jump="water" style="cursor: pointer;" title="Open Water Tracker">
+            <span class="pillar-tag">WATER</span>
+            <span class="pillar-value" id="homeSummaryWater">0 / 3,000 ML</span>
+            <span class="pillar-sub" id="homeSummaryWaterSub">0 / 12 glasses (250ml)</span>
+          </div>
+
+          <!-- 3. Calories -->
+          <div class="pillar-stat-block" data-jump="food" style="cursor: pointer;" title="Open Food Hub">
+            <span class="pillar-tag">CALORIES</span>
+            <span class="pillar-value" id="homeSummaryFood">0 KCAL</span>
+            <span class="pillar-sub" id="homeSummaryFoodSub">Daily intake</span>
+          </div>
+
+          <!-- 4. Protein -->
+          <div class="pillar-stat-block" data-jump="food" style="cursor: pointer;" title="Open Food Hub">
+            <span class="pillar-tag">PROTEIN</span>
+            <span class="pillar-value" id="dashCurrentProtein">0 G</span>
+            <span class="pillar-sub">Target 120g</span>
+          </div>
+
+          <!-- 5. Day Count -->
+          <div class="pillar-stat-block">
+            <span class="pillar-tag">DAY</span>
+            <span class="pillar-value" id="homeSummaryTraining" style="color: var(--accent-gold);">01</span>
+            <span class="pillar-sub" id="homeSummaryTrainingSub">Winter Arc</span>
+          </div>
+        </div>
+
+        <!-- Transformation Status & Protocol Overview Strip -->
+        <div class="activity-overview-strip">
+          <div class="overview-item">
+            <span class="overview-label">WORKOUT PROTOCOL</span>
+            <span class="overview-val" id="dashWorkoutSummaryVal">Dhruva Combat &bull; Akhada Conditioning</span>
+          </div>
+          <div class="overview-item">
+            <span class="overview-label">DISCIPLINE STREAK</span>
+            <span class="overview-val highlight" id="dashStreakOverviewVal">1 Day Fire</span>
+          </div>
+          <div class="overview-item">
+            <span class="overview-label">OVERALL STATUS</span>
+            <span class="overview-val" id="dashOverallStatusVal">On Track to 70 KG</span>
+          </div>
+        </div>
+
+        <!-- Fast Journal Actions Row -->
+        <div class="journal-actions-row">
+          <button class="btn-journal-action" id="btnOpenWeightModal">
+            <span>&#9878;</span> LOG SCALE WEIGHT
+          </button>
+          <button class="btn-journal-action" data-jump="steps">
+            <span>&#128694;</span> OPEN STEPS TRACKER
+          </button>
+          <button class="btn-journal-action" id="btnLaunchTrainingFromDash">
+            <span>&#9889;</span> COMBAT TRAINING
+          </button>
+          <button class="btn-journal-action" data-jump="food">
+            <span>&#127869;</span> WHAT ARE YOU EATING?
+          </button>
+        </div>
+
+        <!-- Akhada Mindset & Dynamic Guidance Banner -->
+        <aside class="coach-alert-card" id="coachAlertCard">
+          <div class="coach-alert-body">
+            <div class="coach-alert-tag" id="coachAlertTag">AKHADA COACH</div>
+            <h3 class="coach-alert-title" id="coachAlertTitle">Discipline Over Motivation</h3>
+            <p class="coach-alert-text" id="coachAlertText">Loading your daily athletic guidance...</p>
+          </div>
+        </aside>
+
+        <!-- Dynamic NLP Food Quick Input on Activity -->
+        <div class="nlp-input-row" style="display: none;">
+          <input type="text" id="nlpFoodInputDash" placeholder="Hidden compatibility input">
+          <button id="btnParseFoodDash">Parse</button>
+          <div id="nlpPreviewContainerDash"></div>
+        </div>
+
+      </section>
+
+      <!-- ========================================================
+           VIEW 2: FOOD HUB (DYNAMIC NUTRITION & MESS COACH)
+           ======================================================== -->
+      <section class="view-section" id="view-food">
+
+        <div class="section-headline">
+          <h2 class="section-title">FOOD</h2>
+          <span class="section-subtitle">WHAT ARE YOU EATING?</span>
+        </div>
+
+        <!-- Large Search / Natural Language Input -->
+        <div class="food-input-section">
+          <div class="food-search-box">
+            <div class="food-main-input-wrap">
+              <input type="text" id="nlpFoodInputFood" class="mess-text-input" placeholder='Search or type food (e.g. "4 bread with jam", "2 eggs and 2 chapathi", "millet dosa")...'>
+              <button class="btn-secondary" id="btnParseFoodFood" style="position: absolute; right: 8px; padding: 10px 18px;">
+                ANALYZE &rarr;
+              </button>
+            </div>
+
+            <!-- Auto Meal Context Selector (Breakfast, Lunch, Snack, Dinner) -->
+            <div class="meal-context-bar" id="mealContextBar">
+              <button class="meal-slot-btn active" data-slot="breakfast">BREAKFAST</button>
+              <button class="meal-slot-btn" data-slot="lunch">LUNCH</button>
+              <button class="meal-slot-btn" data-slot="snack">SNACK</button>
+              <button class="meal-slot-btn" data-slot="dinner">DINNER</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Live Parsed Preview Container (Shows macros, quantity scaling, verified/estimated badge) -->
+          <div id="nlpPreviewContainerFood" style="display: none; margin-top: 14px;"></div>
+        </div>
+
+        <!-- Today's Total Nutrition Metrics -->
+        <div class="nutrition-estimate-card">
+          <div class="nutrition-card-header">
+            <span class="card-tag">TODAY'S TOTAL INTAKE</span>
+            <span class="confidence-badge high" id="badgeMacroCal">DAILY TRACKER</span>
+          </div>
+
+          <div class="macros-grid-4">
+            <div class="macro-box">
+              <span class="macro-label">Calories</span>
+              <span class="macro-num cal" id="macroFoodTabCal">0</span>
+            </div>
+            <div class="macro-box">
+              <span class="macro-label">Protein</span>
+              <span class="macro-num" id="macroFoodTabProtein">0g</span>
+            </div>
+            <div class="macro-box">
+              <span class="macro-label">Carbs</span>
+              <span class="macro-num" id="macroFoodTabCarbs">0g</span>
+            </div>
+            <div class="macro-box">
+              <span class="macro-label">Fat</span>
+              <span class="macro-num" id="macroFoodTabFat">0g</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coach Navigation Sub-tabs -->
+        <div class="mess-coach-tabs" style="display: flex; gap: 8px; margin: 24px 0 16px; overflow-x: auto;">
+          <button class="coach-tab-btn active" data-coach-tab="plate-builder" style="background: var(--bg-graphite); border: 1px solid var(--border-subtle); color: var(--text-stone); padding: 8px 16px; border-radius: 2px; font-family: var(--font-title); font-size: 0.72rem; letter-spacing: 0.15em; cursor: pointer;">
+            &#127858; MESS FOOD COACH
+          </button>
+          <button class="coach-tab-btn" data-coach-tab="meal-logs" style="background: var(--bg-graphite); border: 1px solid var(--border-subtle); color: var(--text-stone); padding: 8px 16px; border-radius: 2px; font-family: var(--font-title); font-size: 0.72rem; letter-spacing: 0.15em; cursor: pointer;">
+            &#127869; TODAY'S MEAL TIMELINE
+          </button>
+          <button class="coach-tab-btn" data-coach-tab="database" style="background: var(--bg-graphite); border: 1px solid var(--border-subtle); color: var(--text-stone); padding: 8px 16px; border-radius: 2px; font-family: var(--font-title); font-size: 0.72rem; letter-spacing: 0.15em; cursor: pointer;">
+            &#128218; FOOD DATABASE (40+)
+          </button>
+          <button class="coach-tab-btn" data-coach-tab="compare" style="background: var(--bg-graphite); border: 1px solid var(--border-subtle); color: var(--text-stone); padding: 8px 16px; border-radius: 2px; font-family: var(--font-title); font-size: 0.72rem; letter-spacing: 0.15em; cursor: pointer;">
+            &#9878; FOOD COMPARISON
+          </button>
+        </div>
+
+        <!-- SUB-SECTION 1: MESS FOOD COACH -->
+        <div class="coach-sub-view" id="coachSubPlateBuilder" style="display: block;">
+          <article class="arc-card">
+            <div class="card-header-row">
+              <div class="card-title-group">
+                <span class="card-tag">HOSTEL MESS DISCIPLINE</span>
+                <h3 class="card-name">MESS FOOD COACH</h3>
+              </div>
+              <span class="card-badge">Intelligent Recommendations</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-stone); line-height: 1.45; margin-bottom: 12px;">
+              Enter today's mess menu items. The coach analyzes all foods, categorizes into <strong>PRIORITIZE</strong>, <strong>MODERATE</strong>, and <strong>LIMIT</strong>, calculates practical portions, and adapts dynamically to what you already logged today.
+            </p>
+
+            <!-- Quick Selection Chips from Database -->
+            <div class="mess-chips-container" id="messSelectChips" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;"></div>
+
+            <!-- Free-form Input -->
+            <div class="mess-input-box">
+              <label for="messCustomInput" style="font-size: 0.72rem; color: var(--text-ash); font-weight: 700; letter-spacing: 0.15em;">TYPE MESS ITEMS (COMMA SEPARATED):</label>
+              <input type="text" id="messCustomInput" class="mess-text-input" style="margin-top: 6px;" placeholder="e.g. Rice, Chapathi, Chicken, Dal, Curd, Potato curry">
+              <button class="btn-generate-plate" id="btnGeneratePlate">
+                GENERATE RECOMMENDED PLATE &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Plate Result Container (Injected by JS with PRIORITIZE, MODERATE, LIMIT PORTION & practical portions) -->
+          <div id="plateResultContainer" style="display: none; margin-top: 14px;"></div>
+        </div>
+
+        <!-- SUB-SECTION 2: MEAL LOGS TIMELINE -->
+        <div class="coach-sub-view" id="coachSubMealLogs" style="display: none;">
+          <article class="arc-card">
+            <div class="card-header-row">
+              <div class="card-title-group">
+                <span class="card-tag">TODAY'S TIMELINE</span>
+                <h3 class="card-name">MEALS LOGGED</h3>
+              </div>
+            </div>
+
+            <!-- Breakfast Slot -->
+            <div class="tier-group prioritize" style="margin-top: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="tier-header">BREAKFAST</span>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <span id="slotTotalsBreakfast" style="font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;">0 kcal</span>
+                  <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.7rem;" onclick="app.openAddMealModal('breakfast')">+ Add</button>
+                </div>
+              </div>
+              <div id="mealSlotItemsBreakfast" class="tier-items-list" style="margin-top: 6px;">
+                <span style="color: var(--text-ash); font-style: italic;">No items logged</span>
+              </div>
+            </div>
+
+            <!-- Lunch Slot -->
+            <div class="tier-group prioritize" style="margin-top: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="tier-header">LUNCH</span>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <span id="slotTotalsLunch" style="font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;">0 kcal</span>
+                  <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.7rem;" onclick="app.openAddMealModal('lunch')">+ Add</button>
+                </div>
+              </div>
+              <div id="mealSlotItemsLunch" class="tier-items-list" style="margin-top: 6px;">
+                <span style="color: var(--text-ash); font-style: italic;">No items logged</span>
+              </div>
+            </div>
+
+            <!-- Snack Slot -->
+            <div class="tier-group moderate" style="margin-top: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="tier-header">SNACK</span>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <span id="slotTotalsSnack" style="font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;">0 kcal</span>
+                  <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.7rem;" onclick="app.openAddMealModal('snack')">+ Add</button>
+                </div>
+              </div>
+              <div id="mealSlotItemsSnack" class="tier-items-list" style="margin-top: 6px;">
+                <span style="color: var(--text-ash); font-style: italic;">No items logged</span>
+              </div>
+            </div>
+
+            <!-- Dinner Slot -->
+            <div class="tier-group moderate" style="margin-top: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="tier-header">DINNER</span>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                  <span id="slotTotalsDinner" style="font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;">0 kcal</span>
+                  <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.7rem;" onclick="app.openAddMealModal('dinner')">+ Add</button>
+                </div>
+              </div>
+              <div id="mealSlotItemsDinner" class="tier-items-list" style="margin-top: 6px;">
+                <span style="color: var(--text-ash); font-style: italic;">No items logged</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- SUB-SECTION 3: FOOD DATABASE -->
+        <div class="coach-sub-view" id="coachSubDatabase" style="display: none;">
+          <article class="arc-card">
+            <div class="card-header-row">
+              <div class="card-title-group">
+                <span class="card-tag">INDIAN &amp; HOSTEL DATABASE</span>
+                <h3 class="card-name">NUTRITION &amp; PORTIONS</h3>
+              </div>
+              <span class="card-badge" id="foodDbCountBadge">40+ Foods</span>
+            </div>
+
+            <div class="food-search-row" style="margin-bottom: 12px;">
+              <input type="text" id="foodDbSearchInput" class="mess-text-input" placeholder="Search foods (e.g. egg, chicken, idli, rice, dal)...">
+            </div>
+
+            <div class="food-category-scroll" id="foodCategoryFilters" style="display: flex; gap: 6px; overflow-x: auto; margin-bottom: 14px;">
+              <button class="btn-secondary active" data-cat="all">All Foods</button>
+              <button class="btn-secondary" data-cat="breakfast">Breakfast</button>
+              <button class="btn-secondary" data-cat="grains">Rice &amp; Grains</button>
+              <button class="btn-secondary" data-cat="protein">Protein</button>
+              <button class="btn-secondary" data-cat="vegetables">Vegetables</button>
+              <button class="btn-secondary" data-cat="snacks">Snacks</button>
+            </div>
+
+            <div class="food-cards-list" id="foodCardsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+          </article>
+        </div>
+
+        <!-- SUB-SECTION 4: COMPARISON TOOL -->
+        <div class="coach-sub-view" id="coachSubCompare" style="display: none;">
+          <article class="arc-card">
+            <div class="card-header-row">
+              <span class="card-tag">SMART HOSTEL CHOICES</span>
+              <h3 class="card-name">FOOD COMPARISON</h3>
+            </div>
+
+            <div class="compare-preset-chips" id="comparePresetChips" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;"></div>
+
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="compareCustomInput" class="mess-text-input" placeholder="e.g. Chapathi vs Rice, or Poori vs Idli">
+              <button class="btn-secondary" id="btnRunCompare" style="white-space: nowrap;">Compare</button>
+            </div>
+
+            <div id="compareResultContainer" style="margin-top: 14px;"></div>
+          </article>
+        </div>
+
+      </section>
+
+      <!-- ========================================================
+           VIEW 3: WATER TRACKER (3,000 ML DAILY ATHLETE TARGET)
+           ======================================================== -->
+      <section class="view-section" id="view-water">
+
+        <div class="section-headline">
+          <h2 class="section-title">WATER</h2>
+          <span class="section-subtitle">HYDRATION PROTOCOL</span>
+        </div>
+
+        <article class="arc-card water-container" id="cardWaterGoal">
+          <div class="water-hero-display">
+            <span class="water-target-label">3,000 ML DAILY ATHLETE TARGET</span>
+            <div class="water-volume-huge">
+              <span id="waterCurrentDisplay">0</span>
+              <span class="water-volume-unit">/ <span id="waterTargetDisplay">3,000</span> ML</span>
+            </div>
+            <div class="water-fraction-text">
+              <span id="waterRemainingText">3,000 ML REMAINING</span> &bull;
+              <span id="waterPercentDisplay" style="color: var(--accent-gold);">0%</span> &bull;
+              <span id="waterGlassesDisplay">0 / 12 glasses (250ml)</span>
+            </div>
+
+            <!-- Thin Metallic Champagne Hydration Progress Line -->
+            <div class="water-progress-track" title="Hydration Progress">
+              <div class="water-progress-fill" id="waterProgressFill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- 12 Minimal Drop Indicators Grid -->
+          <div class="water-drops-grid" id="waterDropsGrid" title="12 glasses of 250ml each"></div>
+
+          <!-- 1-Tap Actions: +250 ML Primary, UNDO Secondary -->
+          <div class="water-actions-row">
+            <button class="btn-water-add" id="btnWaterAdd250" aria-label="Add 250 milliliters of water">
+              <span>&plus;</span> 250 ML
+            </button>
+            <button class="btn-water-undo" id="btnWaterUndo250" aria-label="Undo 250 milliliters of water">
+              <span>&#8634;</span> UNDO
+            </button>
+          </div>
+        </article>
+
+        <!-- Hydration History & Logs -->
+        <article class="arc-card" style="margin-top: 16px;">
+          <div class="card-header-row">
+            <div class="card-title-group">
+              <span class="card-tag">HYDRATION LOGS</span>
+              <h3 class="card-name">TODAY'S WATER LOGS</h3>
+            </div>
+            <span class="card-badge" id="waterGoalBadge">Target: 3L</span>
+          </div>
+          <div id="waterHistoryList" style="display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem;"></div>
+        </article>
+
+      </section>
+
+      <!-- ========================================================
+           VIEW 4: STEPS (DEDICATED 12,000 STEPS / DAY PROTOCOL)
+           Aliased with walking for test and backwards compatibility
+           ======================================================== -->
+      <section class="view-section" id="view-steps" data-section-alias="walking">
+
+        <div class="section-headline">
+          <h2 class="section-title">STEPS</h2>
+          <span class="section-subtitle">12,000 STEPS / DAY PROTOCOL</span>
+        </div>
+
+        <!-- Main Visual: Large Circular / Cinematic Progress Indicator -->
+        <article class="arc-card steps-cinematic-card" id="cardStepsGoal">
+          <div class="steps-circular-container">
+            <div class="steps-circle-wrap">
+              <svg class="steps-ring-svg" viewBox="0 0 280 280">
+                <defs>
+                  <linearGradient id="stepsGradRing" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#E7D19A" />
+                    <stop offset="65%" stop-color="#D6B36A" />
+                    <stop offset="100%" stop-color="#8A6637" />
+                  </linearGradient>
+                </defs>
+                <circle class="steps-ring-bg" cx="140" cy="140" r="118" />
+                <circle class="steps-ring-fill" id="stepsRingCircle" cx="140" cy="140" r="118" />
+              </svg>
+              <div class="steps-circle-center">
+                <div class="steps-number-huge" id="stepsCurrentDisplay">0 <span class="stat-unit">steps</span></div>
+                <div class="steps-center-label">STEPS</div>
+                <div class="steps-target-ratio" id="stepsTargetRatio">/ 12,000 STEPS</div>
+                <div class="steps-pct-badge">
+                  <span id="stepsRingPercent">0%</span>
+                  <span class="pct-sub">of daily goal</span>
+                </div>
+                <div class="steps-remaining-status" id="stepsRemainingText">12,000 STEPS REMAINING</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Input: Quick Actions (+1,000, +2,500, +5,000) & CUSTOM -->
+          <div class="steps-quick-actions">
+            <button class="btn-step-action btn-step-add" data-add="1000">+1,000</button>
+            <button class="btn-step-action btn-step-add" data-add="2500">+2,500</button>
+            <button class="btn-step-action btn-step-add" data-add="5000">+5,000</button>
+            <button class="btn-step-action btn-step-custom" id="btnCustomStepModal">CUSTOM</button>
+          </div>
+        </article>
+
+        <!-- 7-DAY CONSISTENCY -->
+        <article class="arc-card" style="margin-top: 16px;">
+          <div class="card-header-row">
+            <div class="card-title-group">
+              <span class="card-tag">GOAL COMPLETION</span>
+              <h3 class="card-name">7-DAY CONSISTENCY</h3>
+            </div>
+            <span class="card-badge" id="stepsConsistencyBadge">Target: 12,000 / day</span>
+          </div>
+
+          <div class="step-consistency-grid" id="stepConsistencyGrid">
+            <!-- Dynamically populated: 7 days with day label, count, and ✓ / ✕ -->
+          </div>
+        </article>
+
+        <!-- 7-DAY HISTORY (Refined Muted Champagne-Gold Visualization) -->
+        <article class="arc-card" style="margin-top: 16px;">
+          <div class="card-header-row">
+            <div class="card-title-group">
+              <span class="card-tag">DAILY ARCHIVE</span>
+              <h3 class="card-name">7-DAY HISTORY</h3>
+            </div>
+            <span class="card-badge" id="walkWeeklyAvgBadge">Avg: 0 steps</span>
+          </div>
+
+          <div class="step-refined-history" id="stepHistoryList">
+            <!-- Dynamically populated with clean rows: Day, steps count, subtle gold bar -->
+          </div>
+          <!-- Hidden compatibility elements -->
+          <div id="stepsBarChartContainer" style="display: none;"></div>
+          <span id="stepsGoalBadge" style="display: none;"></span>
+        </article>
+
+      </section>
+
+      <!-- ========================================================
+           VIEW 5: TRAINING MODE (DHRUVA COMBAT INTENSITY)
+           ======================================================== -->
+      <section class="view-section" id="view-training">
+
+        <div class="section-headline">
+          <h2 class="section-title">TRAINING MODE</h2>
+          <span class="section-subtitle">DHRUVA-INSPIRED COMBAT DISCIPLINE</span>
+        </div>
+
+        <article class="arc-card">
+          <label for="workoutProtocolSelect" style="font-size: 0.72rem; color: var(--accent-gold); font-weight: 700; text-transform: uppercase;">Select Protocol:</label>
+          <select id="workoutProtocolSelect" class="mess-text-input" style="background: var(--bg-graphite); font-weight: 600; margin-top: 6px;">
+            <option value="dhruva_combat_conditioning">Dhruva Combat &amp; Calisthenics (35 mins • Akhada Conditioning)</option>
+            <option value="upper_body_armor">Upper Body Armor &amp; Push Power (30 mins • Explosive Push)</option>
+            <option value="fat_loss_metcon">Winter Arc MetCon Burner (25 mins • Rapid Fat Mobilization)</option>
+          </select>
+
+          <div class="weight-stat-strip" style="margin-top: 16px;">
+            <div class="stat-item">
+              <span class="stat-label">Workout</span>
+              <span class="stat-value" id="workoutStatTodayName" style="font-size: 1.2rem;">Dhruva</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Duration</span>
+              <span class="stat-value" id="workoutStatDuration">35m</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Est. Burn</span>
+              <span class="stat-value" id="workoutStatCalories">~380</span>
+            </div>
+          </div>
+
+          <div style="display: none;">
+            <span id="workoutStatStreak">1 Day Arc</span>
+            <span id="workoutStatSteps">0 / 12k</span>
+          </div>
+
+          <button class="btn-generate-plate" id="btnStartWorkout">
+            &#9889; START WORKOUT SESSION
+          </button>
+        </article>
+
+        <!-- Hidden video elements for training sync compatibility -->
+        <div style="display: none;">
+          <video id="trainingVideoPlayer"></video>
+          <canvas id="trainingCanvasVisualizer"></canvas>
+          <input type="file" id="trainingVideoUploadInput">
+          <input type="url" id="trainingVideoUrlInput">
+          <button id="btnSaveVideoUrl"></button>
+          <div id="trainingDrillsContainer"></div>
+        </div>
+
+      </section>
+
+      <!-- ========================================================
+           VIEW 6: PROGRESS & "MY JOURNEY"
+           ======================================================== -->
+      <section class="view-section" id="view-progress">
+
+        <div class="section-headline">
+          <h2 class="section-title">MY JOURNEY</h2>
+          <span class="section-subtitle">85 &rarr; 70 KG PROGRESSION</span>
+        </div>
+
+        <article class="arc-card">
+          <div class="card-header-row">
+            <span class="card-tag">WEIGHT METRICS</span>
+            <span class="card-badge" id="chartLatestWeightBadge">85.0 kg</span>
+          </div>
+
+          <div class="weight-stat-strip">
+            <div class="stat-item">
+              <span class="stat-label">Current Weight</span>
+              <span class="stat-value" id="progCurrentWeight">85.0 kg</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Total Lost</span>
+              <span class="stat-value highlight" id="progTotalLost">0.0 kg</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Remaining</span>
+              <span class="stat-value" id="progRemaining">15.0 kg</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <span class="stat-label">7-Day Step Avg:</span>
+            <span id="progStepAvg" style="color: var(--text-stone); font-weight: 600;">&mdash;</span>
+          </div>
+
+          <div class="chart-svg-wrap" style="height: 140px; margin-top: 16px;">
+            <svg class="weight-svg-chart" id="weightSvgChart" viewBox="0 0 460 200" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+              <defs>
+                <linearGradient id="weightAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#C6A15B" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#C6A15B" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </article>
+
+        <article class="arc-card">
+          <div class="card-header-row">
+            <span class="card-tag">MEASUREMENT LOGS</span>
+            <h3 class="card-name">WEIGHT HISTORY</h3>
+          </div>
+          <div id="weightHistoryListContainer" style="display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem;"></div>
+        </article>
+
+        <!-- Hidden elements for test compatibility -->
+        <div style="display: none;">
+          <div id="milestonesGrid"></div>
+          <div id="weightTodayDisplay">85.0 kg</div>
+          <div id="weightTodaySub">Starting 85kg</div>
+          <div id="weightLoggedBadge">Unlogged</div>
+          <div id="weightStatTotalLost">0.0 kg</div>
+          <div id="weightStatRemaining">15.0 kg</div>
+          <div id="weightStatWeeklyAvg">85.0 kg</div>
+        </div>
+
+      </section>
+
+      <!-- ========================================================
+           VIEW 7: ARC SETTINGS
+           ======================================================== -->
+      <section class="view-section" id="view-settings">
+
+        <div class="section-headline">
+          <h2 class="section-title">ARC SETTINGS</h2>
+          <span class="section-subtitle">PARAMETERS &amp; BACKUP</span>
+        </div>
+
+        <article class="arc-card">
+          <div class="card-header-row">
+            <span class="card-tag">TARGETS</span>
+            <h3 class="card-name">ATHLETE PROFILE</h3>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+              <label for="setStartingWeight" style="font-size: 0.75rem; color: var(--text-ash);">Starting Weight (kg):</label>
+              <input type="number" step="0.1" id="setStartingWeight" class="mess-text-input" value="85.0">
+            </div>
+            <div>
+              <label for="setTargetWeight" style="font-size: 0.75rem; color: var(--text-ash);">Target Weight (kg):</label>
+              <input type="number" step="0.1" id="setTargetWeight" class="mess-text-input" value="70.0">
+            </div>
+            <div>
+              <label for="setStepGoal" style="font-size: 0.75rem; color: var(--text-ash);">Daily Step Target:</label>
+              <input type="number" step="500" id="setStepGoal" class="mess-text-input" value="12000">
+            </div>
+            <div>
+              <label for="setWaterGoal" style="font-size: 0.75rem; color: var(--text-ash);">Daily Water Target (ml):</label>
+              <input type="number" step="250" id="setWaterGoal" class="mess-text-input" value="3000">
+            </div>
+            <div>
+              <label for="setWaterInc" style="font-size: 0.75rem; color: var(--text-ash);">Water Tap Increment (ml):</label>
+              <input type="number" step="50" id="setWaterInc" class="mess-text-input" value="250">
+            </div>
+            <button class="btn-generate-plate" id="btnSaveProfileSettings">
+              SAVE TARGET SETTINGS
+            </button>
+          </div>
+        </article>
+
+        <article class="arc-card">
+          <div class="card-header-row">
+            <span class="card-tag">DEMO &amp; RESET</span>
+            <h3 class="card-name">CONTROLS</h3>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn-secondary" id="btnLoadDemoData">Load Realistic 10-Day Demo Arc (85 &rarr; 83.4 kg)</button>
+            <button class="btn-secondary" id="btnResetToCleanStart">Reset to Clean Day 1 Starting State (85.0 kg)</button>
+          </div>
+        </article>
+
+        <article class="arc-card">
+          <div class="card-header-row">
+            <span class="card-tag">DATA SOVEREIGNTY</span>
+            <h3 class="card-name">BACKUP JSON</h3>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button class="btn-secondary" id="btnExportBackup">Export Backup JSON</button>
+            <button class="btn-secondary" id="btnTriggerImport">Import Backup JSON</button>
+          </div>
+          <input type="file" id="fileImportInput" accept=".json" style="display: none;">
+        </article>
+
+      </section>
+
+      <!-- VIEW 8: HISTORY (Hidden compatibility container) -->
+      <section class="view-section" id="view-history" style="display: none;">
+        <div id="reviewStreakNumber">1</div>
+        <div id="weeklyReviewsContainer"></div>
+      </section>
+
+    </div>
+
+    <!-- Mobile Bottom Navigation (ACTIVITY, STEPS, FOOD, WATER) -->
+    <nav class="bottom-nav-bar" aria-label="Mobile Navigation">
+      <button class="nav-item-btn active" data-nav="activity" aria-label="Activity Journal">
+        <span class="nav-icon">&#9670;</span>
+        <span class="nav-label">ACTIVITY</span>
+      </button>
+      <button class="nav-item-btn" data-nav="steps" aria-label="Steps Tracker">
+        <span class="nav-icon">&#128694;</span>
+        <span class="nav-label">STEPS</span>
+      </button>
+      <button class="nav-item-btn" data-nav="food" aria-label="Food & Nutrition">
+        <span class="nav-icon">&#9632;</span>
+        <span class="nav-label">FOOD</span>
+      </button>
+      <button class="nav-item-btn" data-nav="water" aria-label="Water Tracker">
+        <span class="nav-icon">&#9679;</span>
+        <span class="nav-label">WATER</span>
+      </button>
+    </nav>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+  <!-- Modal 1: Log Weight Dialog -->
+  <div class="modal-overlay" id="modalWeightOverlay">
+    <div class="modal-sheet" role="dialog" aria-modal="true" aria-labelledby="modalWeightTitle">
+      <div class="modal-title-row">
+        <h3 class="modal-title" id="modalWeightTitle">LOG TODAY'S WEIGHT</h3>
+        <button class="btn-close-modal" id="btnCloseWeightModal">&times;</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label for="inputLogWeightVal" style="font-size: 0.78rem; color: var(--text-ash);">Current Weight (kg):</label>
+        <input type="number" step="0.1" id="inputLogWeightVal" class="mess-text-input" style="font-size: 1.6rem; text-align: center; font-family: var(--font-display);" placeholder="85.0">
+        <label for="inputLogWeightDate" style="font-size: 0.78rem; color: var(--text-ash);">Measurement Date:</label>
+        <input type="date" id="inputLogWeightDate" class="mess-text-input">
+        <label for="inputLogWeightNote" style="font-size: 0.78rem; color: var(--text-ash);">Note (optional):</label>
+        <input type="text" id="inputLogWeightNote" class="mess-text-input" placeholder="e.g. Fasted morning weigh-in">
+        <button class="btn-generate-plate" id="btnSaveWeightEntry">
+          SAVE WEIGHT MEASUREMENT
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Step Entry Dialog -->
+  <div class="modal-overlay" id="modalStepOverlay">
+    <div class="modal-sheet" role="dialog" aria-modal="true" aria-labelledby="modalStepTitle">
+      <div class="modal-title-row">
+        <h3 class="modal-title" id="modalStepTitle">LOG DAILY STEPS</h3>
+        <button class="btn-close-modal" id="btnCloseStepModal">&times;</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label for="inputStepTotalVal" style="font-size: 0.78rem; color: var(--text-ash);">Set Total Steps Today:</label>
+        <input type="number" step="100" id="inputStepTotalVal" class="mess-text-input" style="font-size: 1.6rem; text-align: center; font-family: var(--font-display);" placeholder="12000">
+        <button class="btn-generate-plate" id="btnSaveStepEntry">
+          SAVE STEP COUNT
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Add Meal Item Dialog -->
+  <div class="modal-overlay" id="modalMealOverlay">
+    <div class="modal-sheet" role="dialog" aria-modal="true" aria-labelledby="modalMealTitle">
+      <div class="modal-title-row">
+        <h3 class="modal-title" id="modalMealTitle">ADD MEAL ITEM</h3>
+        <button class="btn-close-modal" id="btnCloseMealModal">&times;</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label for="inputMealSlotSelect" style="font-size: 0.78rem; color: var(--text-ash);">Meal Slot:</label>
+        <select id="inputMealSlotSelect" class="mess-text-input" style="background: var(--bg-graphite);">
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="snack">Snack</option>
+          <option value="dinner">Dinner</option>
+        </select>
+        <label for="inputMealItemName" style="font-size: 0.78rem; color: var(--text-ash);">Food Name:</label>
+        <input type="text" id="inputMealItemName" class="mess-text-input" placeholder="e.g. 2 Chapathi with Dal">
+        <label for="inputMealItemPortion" style="font-size: 0.78rem; color: var(--text-ash);">Portion / Serving:</label>
+        <input type="text" id="inputMealItemPortion" class="mess-text-input" placeholder="e.g. 2 rotis + 1 bowl dal">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div>
+            <label for="inputMealItemCal" style="font-size: 0.75rem; color: var(--text-ash);">Est. Calories:</label>
+            <input type="number" id="inputMealItemCal" class="mess-text-input" placeholder="350">
+          </div>
+          <div>
+            <label for="inputMealItemProtein" style="font-size: 0.75rem; color: var(--text-ash);">Est. Protein (g):</label>
+            <input type="number" id="inputMealItemProtein" class="mess-text-input" placeholder="14">
+          </div>
+        </div>
+        <button class="btn-generate-plate" id="btnSaveMealItem">
+          ADD TO MEAL LOG
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-Screen Style Training Session Overlay -->
+  <div class="modal-overlay" id="trainingSessionOverlay" role="dialog" aria-modal="true">
+    <div class="modal-sheet" style="max-width: 600px;">
+      <div class="modal-title-row">
+        <h3 class="modal-title" id="sessionProtocolTitle">COMBAT SESSION</h3>
+        <button class="btn-close-modal" id="btnFinishWorkoutEarly">&times;</button>
+      </div>
+      <div id="sessionCountdownWrap" style="text-align: center; padding: 24px;">
+        <span class="journal-motto">BATTLE COUNTDOWN</span>
+        <div class="journal-main-title" id="sessionCountdownNumber" style="justify-content: center; margin: 12px 0;">3</div>
+        <p style="font-size: 0.85rem; color: var(--text-stone);">DISCIPLINE OVER COMFORT</p>
+      </div>
+      <div id="sessionContentWrap" style="display: none; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <span style="font-family: var(--font-body); font-size: 0.78rem; color: var(--accent-gold);" id="sessionProgressText">0% Complete</span>
+          <span style="font-family: var(--font-display); font-size: 1.4rem;" id="sessionElapsedDisplay">00:00</span>
+        </div>
+        <div class="journey-progress-track" style="margin-bottom: 14px;">
+          <div class="journey-progress-fill" id="sessionProgressBar" style="width: 0%;"></div>
+        </div>
+        <div id="sessionRestBanner" style="display: none; padding: 10px; background: var(--bg-espresso); margin-bottom: 12px; border-left: 2px solid var(--accent-gold);">
+          <span style="font-size: 0.75rem; color: var(--accent-gold);">ACTIVE REST: <span id="sessionRestSeconds">45s</span></span>
+          <button class="btn-secondary" id="btnSkipRest" style="padding: 3px 8px; font-size: 0.7rem; float: right;">Skip</button>
+        </div>
+        <div id="sessionExerciseList" style="max-height: 240px; overflow-y: auto;"></div>
+      </div>
+      <div id="sessionCelebrationScreen" style="display: none; text-align: center; padding: 20px;">
+        <div class="journal-main-title" style="justify-content: center; font-size: 2.8rem; color: var(--accent-gold);">CONQUERED</div>
+        <p style="font-size: 0.85rem; color: var(--text-stone); margin-top: 8px;">Session complete. You honored the Winter Arc standard.</p>
+        <div style="display: none;">
+          <span id="celebWorkoutName"></span>
+          <span id="celebWorkoutTime"></span>
+          <span id="celebWorkoutCal"></span>
+        </div>
+        <button class="btn-generate-plate" id="btnExitCelebration" style="margin-top: 18px;">
+          RETURN TO ACTIVITY
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Popup -->
+  <div class="toast-notice" id="appToastNotice" role="status" aria-live="polite">
+    <span id="toastIcon">&check;</span>
+    <span id="toastMessage">Success</span>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="js/food_parser.js"></script>
+  <script src="js/database.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/training.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

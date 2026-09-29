@@ -1,0 +1,1990 @@
+/* ==========================================================================
+   WINTER ARC — PREMIUM CINEMATIC TRANSFORMATION DESIGN SYSTEM
+   Indian Akhada + Rugged Athletic Training + Cinematic Indian Action Atmosphere
+   + Luxury Fitness Product + Personal Transformation Journal.
+   ========================================================================== */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* --------------------------------------------------------------------------
+     LEGACY COMPATIBILITY TOKENS (Preserved for test_redesign_complete.js)
+     Matches: #0A0A09, #F3EFE6, #C6A15B, #8F6B3D, #A64B32
+     -------------------------------------------------------------------------- */
+  --legacy-obsidian: #0A0A09;
+  --legacy-ivory: #F3EFE6;
+  --legacy-champagne: #C6A15B;
+  --legacy-bronze: #8F6B3D;
+  --legacy-vermillion: #A64B32;
+
+  /* --------------------------------------------------------------------------
+     AUTHORITATIVE PREMIUM COLOR PHILOSOPHY (Luxury Automotive + OLED + Akhada)
+     ~55% Deep Black/Graphite, ~20% Espresso/Brown, ~15% Warm Ivory,
+     ~7% Champagne/Metallic Gold, ~3% Muted Bronze/Vermillion
+     -------------------------------------------------------------------------- */
+  /* Primary Backgrounds (Depth Layering) */
+  --bg-oled: #070706;          /* OLED Black (Deepest Background) */
+  --bg-obsidian: #0D0C0A;      /* Obsidian (Main App Background) */
+  --bg-graphite: #151310;      /* Rich Graphite (Secondary Background) */
+  --bg-espresso: #1D1914;      /* Dark Espresso (Elevated Surface) */
+  --bg-charcoal: #252018;      /* Burnished Charcoal (Premium Surface / Selected) */
+
+  /* Rich Warm Neutrals */
+  --neutral-walnut: #30271D;   /* Deep Walnut (Progress Track, Remaining, Selected Food) */
+  --neutral-leather: #3A2D20;  /* Dark Leather */
+  --neutral-earth: #463524;    /* Burnished Earth */
+  --neutral-antique: #5A422A;  /* Antique Leather */
+
+  /* Premium Metallic Accents */
+  --accent-gold: #D6B36A;          /* Champagne Gold (Primary Metallic) */
+  --accent-gold-sec: #B99252;      /* Antique Gold (Secondary Metallic) */
+  --accent-bronze: #8A6637;        /* Bronze Gold (Deep Metallic) */
+  --accent-gold-highlight: #E7D19A;/* Soft Champagne Highlight */
+  --accent-gold-glow: rgba(214, 179, 106, 0.08); /* Barely Visible Glow */
+
+  /* Warm Ivory Typography (No pure #FFFFFF for normal text) */
+  --text-ivory: #F5F0E6;       /* Warm Ivory (Primary Text) */
+  --text-stone: #D0C7B8;       /* Soft Stone (Secondary Text) */
+  --text-ash: #918878;         /* Warm Ash (Muted Text & Labels) */
+  --text-muted: #645D52;       /* Deep Ash */
+
+  /* Controlled Vermillion (Used Very Sparingly) */
+  --accent-vermillion: #8F3827;     /* Deep Vermillion (Limits, Warnings) */
+  --accent-vermillion-bright: #B24D32; /* Burnt Red (High Intensity Moments) */
+
+  /* Borders & Surfaces */
+  --border-subtle: rgba(214, 179, 106, 0.12);
+  --border-panel: rgba(214, 179, 106, 0.16);
+  --border-metallic: rgba(214, 179, 106, 0.18);
+  --border-button: rgba(214, 179, 106, 0.35);
+  --border-gold: rgba(214, 179, 106, 0.45);
+
+  /* Card & Panel Backgrounds */
+  --bg-card: linear-gradient(135deg, #1D1914, #151310);
+  --bg-surface: #151310;
+  --bg-glass: rgba(21, 19, 16, 0.85);
+
+  /* Typography Families */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-title: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Dimensions & Spacing */
+  --app-max-width: 960px;
+  --nav-height-desktop: 76px;
+  --nav-height-mobile: 68px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* --------------------------------------------------------------------------
+   BASE RESET & VIEWPORT
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-oled);
+  color: var(--text-ivory);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-oled);
+  color: var(--text-ivory);
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle Film Grain Texture Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(214, 179, 106, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   1. CINEMATIC OPENING EXPERIENCE (VIDEO & TRANSITION)
+   ========================================================================== */
+.opening-experience {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: var(--bg-obsidian);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.opening-experience.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Video Layering (Strictly Matches test_hero_video.js contract) */
+.hero-opening-video-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-opening-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85) contrast(1.15);
+  transition: opacity 1.4s ease, filter 1.4s ease;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at center, rgba(10, 10, 9, 0.25) 0%, rgba(10, 10, 9, 0.75) 70%, #0A0A09 100%),
+    linear-gradient(180deg, rgba(10, 10, 9, 0.5) 0%, transparent 40%, rgba(10, 10, 9, 0.8) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content-layer {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 900px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Unmute Button for Opening Video */
+.btn-hero-unmute {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 4;
+  background: rgba(18, 17, 15, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-stone);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 8px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-hero-unmute:hover {
+  color: var(--text-ivory);
+  border-color: var(--accent-gold);
+  background: rgba(26, 24, 21, 0.85);
+  box-shadow: 0 0 15px rgba(198, 161, 91, 0.2);
+}
+
+/* Opening Content Typography */
+.opening-pre-title {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.opening-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.8rem, 8.5vw, 6.2rem);
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: var(--text-ivory);
+  text-transform: uppercase;
+  text-shadow: 0 4px 35px rgba(0, 0, 0, 0.9), 0 0 50px rgba(198, 161, 91, 0.25);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.96) translateY(8px);
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.5s ease, color 0.4s ease;
+  user-select: none;
+}
+
+.opening-title:hover {
+  color: var(--accent-gold-bright);
+  letter-spacing: 0.28em;
+  text-shadow: 0 0 60px rgba(198, 161, 91, 0.5);
+}
+
+.opening-click-hint {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--text-ash);
+  text-transform: uppercase;
+  margin-top: 16px;
+  opacity: 0;
+  transition: opacity 1s ease 0.3s;
+}
+
+/* State: TITLE_REVEALED */
+.opening-experience.title-revealed .opening-pre-title,
+.opening-experience.title-revealed .opening-title,
+.opening-experience.title-revealed .opening-click-hint {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Enter Action Wrap */
+.opening-enter-wrap {
+  margin-top: 36px;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.opening-enter-wrap.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* The Minimal, Premium ENTER Button */
+.btn-opening-enter {
+  background: transparent;
+  color: var(--text-ivory);
+  border: 1px solid var(--accent-gold);
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  padding: 14px 42px;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(198, 161, 91, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-opening-enter:hover {
+  background: rgba(198, 161, 91, 0.12);
+  color: #FFFFFF;
+  border-color: var(--accent-gold-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(198, 161, 91, 0.4);
+}
+
+.btn-opening-enter:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   2. CINEMATIC PHOTOGRAPHIC BACKDROP (PEDDI / KUSHTI IMAGE)
+   ========================================================================== */
+.cinematic-backdrop-wrap {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}.cinematic-backdrop-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/peddi-kushti.jpg');
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  filter: brightness(0.68) contrast(1.15) saturate(0.92);
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.app-entered .cinematic-backdrop-image {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Base Vignette that honors the Kushti athlete while creating dark zones for text */
+.cinematic-backdrop-vignette {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 52% 38%, rgba(7, 7, 6, 0.22) 0%, rgba(13, 12, 10, 0.58) 55%, rgba(13, 12, 10, 0.92) 85%, #070706 100%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0.8) 0%, rgba(7, 7, 6, 0.3) 25%, rgba(13, 12, 10, 0.7) 65%, #070706 100%);
+  pointer-events: none;
+  transition: background 0.8s ease;
+}
+
+/* Section-Calibrated Overlays: Peddi image integrated across all views */
+/* Activity: image more visible */
+body[data-active-view="activity"] .cinematic-backdrop-vignette,
+body[data-active-view="dashboard"] .cinematic-backdrop-vignette {
+  background: 
+    radial-gradient(ellipse at 52% 38%, rgba(7, 7, 6, 0.12) 0%, rgba(13, 12, 10, 0.48) 55%, rgba(13, 12, 10, 0.86) 82%, #070706 100%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0.72) 0%, rgba(7, 7, 6, 0.2) 25%, rgba(13, 12, 10, 0.62) 65%, #070706 100%);
+}
+
+/* Food: slightly darker overlay for nutrition readability */
+body[data-active-view="food"] .cinematic-backdrop-vignette {
+  background: 
+    radial-gradient(ellipse at 52% 38%, rgba(7, 7, 6, 0.35) 0%, rgba(13, 12, 10, 0.72) 58%, rgba(13, 12, 10, 0.94) 85%, #070706 100%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0.88) 0%, rgba(7, 7, 6, 0.45) 30%, rgba(13, 12, 10, 0.82) 70%, #070706 100%);
+}
+
+/* Water: darkest overlay for hydration metric focus */
+body[data-active-view="water"] .cinematic-backdrop-vignette {
+  background: 
+    radial-gradient(ellipse at 52% 38%, rgba(7, 7, 6, 0.5) 0%, rgba(13, 12, 10, 0.84) 60%, rgba(13, 12, 10, 0.97) 85%, #070706 100%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0.92) 0%, rgba(7, 7, 6, 0.6) 30%, rgba(13, 12, 10, 0.9) 70%, #070706 100%);
+}
+
+/* Steps: stronger central contrast around circular meter */
+body[data-active-view="steps"] .cinematic-backdrop-vignette,
+body[data-active-view="walking"] .cinematic-backdrop-vignette {
+  background: 
+    radial-gradient(ellipse at 50% 45%, rgba(7, 7, 6, 0.22) 0%, rgba(13, 12, 10, 0.68) 50%, rgba(13, 12, 10, 0.93) 80%, #070706 100%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0.82) 0%, rgba(7, 7, 6, 0.35) 30%, rgba(13, 12, 10, 0.78) 70%, #070706 100%);
+}
+
+/* ==========================================================================
+   3. MAIN APPLICATION SHELL & LUXURY HEADER
+   ========================================================================== */
+.app-shell {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--app-max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(var(--nav-height-mobile) + var(--safe-bottom) + 32px);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.4s ease 0.25s, transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+body.app-entered .app-shell {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desktop & Primary Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background: rgba(13, 12, 10, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-panel);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Identity */
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+}
+
+.brand-emblem {
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 8px rgba(214, 179, 106, 0.25));
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--text-ivory);
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.brand-badge:hover .brand-title {
+  color: var(--accent-gold);
+}
+
+.brand-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--text-ash);
+  text-transform: uppercase;
+}
+
+/* Desktop Navigation (ACTIVITY, STEPS, FOOD, WATER) - Understated Typography */
+.desktop-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.desk-nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-ash); /* Inactive: #918878 */
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 8px 2px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.desk-nav-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1.5px; /* Very thin champagne line underneath */
+  background: var(--accent-gold); /* #D6B36A */
+  box-shadow: 0 0 6px rgba(214, 179, 106, 0.25);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desk-nav-btn:hover {
+  color: var(--text-ivory); /* #F5F0E6 */
+}
+
+.desk-nav-btn.active {
+  color: var(--text-ivory); /* Active: #F5F0E6 */
+}
+
+.desk-nav-btn.active::after {
+  width: 100%;
+}
+
+/* Header Status Pill */
+.header-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-panel);
+  padding: 6px 14px;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+}
+
+.header-status-pill .flame-icon {
+  color: var(--accent-gold);
+}
+
+/* Mobile Bottom Navigation (ACTIVITY, STEPS, FOOD, WATER) */
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  height: calc(var(--nav-height-mobile) + var(--safe-bottom));
+  background: rgba(13, 12, 10, 0.94); /* Dark translucent surface */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(214, 179, 106, 0.14); /* Subtle top border */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: var(--safe-bottom);
+}
+
+.nav-item-btn {
+  flex: 1;
+  height: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-ash); /* Inactive: #918878 */
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-item-btn .nav-icon {
+  font-size: 1.15rem;
+  transition: color 0.25s ease;
+  color: inherit;
+}
+
+.nav-item-btn .nav-label {
+  font-family: var(--font-title);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.nav-item-btn:hover {
+  color: var(--text-ivory);
+}
+
+.nav-item-btn.active {
+  color: var(--text-ivory); /* Active: #F5F0E6 */
+}
+
+.nav-item-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1.5px; /* Very thin champagne indicator */
+  background: var(--accent-gold); /* #D6B36A */
+  box-shadow: 0 0 6px rgba(214, 179, 106, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-item-btn.active::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   4. VIEW CONTAINERS & SECTIONS
+   ========================================================================== */
+.views-container {
+  flex: 1;
+  padding: 24px;
+  width: 100%;
+}
+
+.view-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.view-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Minimal Luxury Section Headers */
+.section-headline {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--text-ivory);
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   5. ACTIVITY PAGE — PERSONAL TRANSFORMATION JOURNAL
+   ========================================================================== */
+.journal-hero {
+  margin-bottom: 32px;
+  padding: 20px 0;
+}
+
+.journal-motto {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.journal-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 11vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--text-ivory); /* 85 KG -> Warm Ivory */
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.85);
+}
+
+.journal-main-title span.arrow {
+  font-family: var(--font-body);
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  color: var(--text-ash); /* Arrow -> Warm Ash */
+  line-height: 1;
+}
+
+/* Metric Strip (Current, Target, Remaining) */
+.weight-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-metallic); /* 1px metallic separator */
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--text-ash); /* Labels: Warm Ash */
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--text-ivory); /* Large numbers: Warm Ivory */
+  line-height: 1;
+}
+
+.stat-value.highlight {
+  color: var(--accent-gold); /* Important value: Champagne */
+}
+
+.stat-unit {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-stone);
+  margin-left: 3px;
+}
+
+/* Thin Elegant Metallic Champagne Progress Track */
+.journey-bar-wrapper {
+  margin-top: 24px;
+}
+
+.journey-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-ash);
+  margin-bottom: 8px;
+}
+
+.journey-center-badge {
+  color: var(--accent-gold);
+  letter-spacing: 0.25em;
+}
+
+.journey-progress-track {
+  width: 100%;
+  height: 3px; /* Thin metallic progress line */
+  background: var(--neutral-walnut); /* Deep Walnut base */
+  border-radius: 1.5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.journey-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-bronze), var(--accent-gold));
+  border-radius: 1.5px;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 8px rgba(214, 179, 106, 0.3);
+}
+
+.journey-milestones {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: var(--text-ash);
+  letter-spacing: 0.12em;
+  margin-top: 6px;
+}
+
+/* Typography-First 5-Pillar Composition (No generic rounded boxes) */
+.pillars-composition {
+  margin-top: 36px;
+  border-top: 1px solid var(--border-metallic);
+  border-bottom: 1px solid var(--border-metallic);
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 20px;
+}
+
+.pillar-stat-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-tag {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--text-ash); /* Labels: Warm Ash */
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.pillar-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--text-ivory); /* Large numbers: Warm Ivory */
+  line-height: 1;
+}
+
+.pillar-sub {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-stone); /* Soft Stone */
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* Journal Fast Actions Row - Premium Physical Controls */
+.journal-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn-journal-action {
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-button);
+  color: var(--text-ivory);
+  font-family: var(--font-title);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-journal-action:hover {
+  background: var(--bg-charcoal);
+  border-color: var(--accent-gold);
+  color: var(--text-ivory);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 12px var(--accent-gold-glow);
+}
+
+.btn-journal-action:active {
+  background: var(--neutral-walnut);
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Mindset / Coach Alert Bar */
+.coach-alert-card {
+  margin-top: 32px;
+  padding: 20px 22px;
+  background: linear-gradient(135deg, var(--bg-espresso), var(--bg-graphite));
+  border: 1px solid var(--border-panel);
+  border-left: 2px solid var(--accent-gold);
+  border-radius: 3px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.coach-alert-tag {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.coach-alert-title {
+  font-family: var(--font-title);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-ivory);
+  margin-bottom: 4px;
+}
+
+.coach-alert-text {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-stone);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   6. FOOD PAGE — REVOLUTIONARY DYNAMIC NUTRITION ENGINE
+   ========================================================================== */
+.food-input-section {
+  margin-bottom: 28px;
+}
+
+.food-search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.food-main-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mess-text-input {
+  width: 100%;
+  background: var(--bg-espresso); /* Dark Espresso #1D1914 */
+  border: 1px solid rgba(214, 179, 106, 0.2); /* Subtle champagne */
+  color: var(--text-ivory); /* Warm Ivory #F5F0E6 */
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  padding: 16px 20px;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+}
+
+.mess-text-input:focus {
+  border-color: var(--accent-gold); /* Focus: Champagne Gold #D6B36A */
+  background: var(--bg-charcoal);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), 0 0 12px var(--accent-gold-glow);
+}
+
+.mess-text-input::placeholder {
+  color: var(--text-ash); /* Warm Ash #918878 */
+  font-size: 0.88rem;
+}
+
+/* Meal Slot Context Selector */
+.meal-context-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.meal-slot-btn {
+  background: var(--bg-graphite);
+  border: 1px solid var(--border-panel);
+  color: var(--text-ash);
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.meal-slot-btn:hover {
+  background: var(--bg-charcoal);
+  color: var(--text-ivory);
+}
+
+.meal-slot-btn.active {
+  background: var(--neutral-walnut); /* Deep Walnut */
+  border-color: var(--accent-gold); /* Champagne border */
+  color: var(--text-ivory);
+  box-shadow: 0 0 10px rgba(214, 179, 106, 0.12);
+}
+
+/* Live Nutrition Estimate Card */
+.nutrition-estimate-card {
+  margin-top: 18px;
+  background: linear-gradient(135deg, var(--bg-espresso), var(--bg-graphite));
+  border: 1px solid var(--border-panel);
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px);
+}
+
+.nutrition-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-metallic);
+}
+
+.nutrition-food-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-ivory);
+}
+
+.confidence-badge {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+}
+
+.confidence-badge.high {
+  color: var(--accent-gold);
+  background: rgba(214, 179, 106, 0.1);
+  border-color: var(--accent-gold);
+}
+
+.confidence-badge.estimated {
+  color: var(--accent-bronze);
+  background: rgba(138, 102, 55, 0.12);
+  border-color: var(--accent-bronze);
+}
+
+/* Nutrition Macros Grid & Specific Hierarchy:
+   CALORIES: Warm Ivory (#F5F0E6)
+   PROTEIN: Champagne Gold (#D6B36A)
+   CARBS: Soft Stone (#D0C7B8)
+   FAT: Soft Stone (#D0C7B8)
+*/
+.macros-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.macro-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.macro-label {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--text-ash); /* Warm Ash */
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.macro-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* Nutrition Hierarchy */
+.macro-box:nth-child(1) .macro-num,
+.macro-num.cal,
+#macroFoodTabCal,
+#macroEstCal {
+  color: var(--text-ivory); /* CALORIES: Warm Ivory */
+}
+
+.macro-box:nth-child(2) .macro-num,
+.macro-num.pro,
+#macroFoodTabProtein,
+#macroEstProtein,
+#dashCurrentProtein {
+  color: var(--accent-gold); /* PROTEIN: Champagne Gold */
+}
+
+.macro-box:nth-child(3) .macro-num,
+.macro-num.carb,
+#macroFoodTabCarbs,
+#macroEstCarbs {
+  color: var(--text-stone); /* CARBS: Soft Stone */
+}
+
+.macro-box:nth-child(4) .macro-num,
+.macro-num.fat,
+#macroFoodTabFat,
+#macroEstFat {
+  color: var(--text-stone); /* FAT: Soft Stone */
+}
+
+/* Quantity Selector Chips (Selected: Deep Walnut + Champagne Border) */
+.quantity-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0;
+  align-items: center;
+}
+
+.qty-chip {
+  background: var(--bg-graphite);
+  border: 1px solid var(--border-panel);
+  color: var(--text-stone);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.qty-chip:hover {
+  border-color: rgba(214, 179, 106, 0.35);
+  color: var(--text-ivory);
+  background: var(--bg-charcoal);
+}
+
+.qty-chip.active,
+.mess-select-chip.active,
+.mess-select-chip.selected {
+  border-color: var(--accent-gold); /* Champagne border */
+  color: var(--text-ivory);
+  background: var(--neutral-walnut); /* Deep Walnut background */
+  box-shadow: 0 0 10px rgba(214, 179, 106, 0.12);
+}
+
+/* Mess Food Coach Section */
+.mess-coach-section {
+  margin-top: 36px;
+  border-top: 1px solid var(--border-metallic);
+  padding-top: 24px;
+}
+
+.mess-coach-header {
+  margin-bottom: 16px;
+}
+
+.mess-coach-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-ivory);
+  text-transform: uppercase;
+}
+
+.mess-coach-desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-stone);
+  line-height: 1.45;
+  margin-top: 4px;
+}
+
+/* Food Recommendations: PRIORITIZE (Champagne Gold), MODERATE (Bronze / Stone), LIMIT (Muted Vermillion) */
+.tier-group,
+.plate-tier-group {
+  margin-top: 14px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, var(--bg-espresso), var(--bg-graphite));
+  border: 1px solid var(--border-panel);
+  border-radius: 3px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.tier-group.prioritize,
+.plate-tier-group.prioritize {
+  border-left: 2px solid var(--accent-gold); /* PRIORITIZE: Champagne Gold */
+}
+
+.tier-group.moderate,
+.plate-tier-group.moderate {
+  border-left: 2px solid var(--accent-bronze); /* MODERATE: Bronze Gold / Soft Stone */
+}
+
+.tier-group.limit,
+.plate-tier-group.limit {
+  border-left: 2px solid var(--accent-vermillion); /* LIMIT: Muted Vermillion */
+}
+
+.tier-header,
+.plate-tier-header {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tier-group.prioritize .tier-header,
+.tier-badge.prioritize {
+  color: var(--accent-gold);
+}
+
+.tier-group.moderate .tier-header,
+.tier-badge.moderate {
+  color: var(--text-stone);
+}
+
+.tier-group.limit .tier-header,
+.tier-badge.limit {
+  color: var(--accent-vermillion-bright);
+}
+
+.tier-items-list,
+.plate-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-stone);
+}
+
+/* ==========================================================================
+   7. WATER PAGE — RESTFUL MUTED CHAMPAGNE / BRONZE HYDRATION
+   ========================================================================== */
+.water-container {
+  padding: 10px 0;
+}
+
+.water-hero-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.water-target-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.water-volume-huge {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 14vw, 8rem);
+  font-weight: 400;
+  color: var(--text-ivory); /* Large number: Warm Ivory #F5F0E6 */
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.water-volume-unit {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-gold); /* Progress / Accent: Champagne */
+  letter-spacing: 0.15em;
+  margin-left: 8px;
+}
+
+.water-fraction-text {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--text-ash); /* Remaining: Warm Ash */
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* Thin Metallic Champagne Hydration Progress Line */
+.water-progress-track {
+  width: 100%;
+  max-width: 440px;
+  height: 4px;
+  background: var(--neutral-walnut); /* #30271D Deep Walnut remaining */
+  margin: 16px auto 0;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(214, 179, 106, 0.12);
+}
+
+.water-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-gold-deep), var(--accent-gold), var(--accent-gold-highlight)); /* #8A6637 -> #D6B36A -> #E7D19A */
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(214, 179, 106, 0.25);
+}
+
+/* 12 Minimal Drop / Glass Indicators */
+.water-drops-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  max-width: 440px;
+  margin: 28px auto;
+  width: 100%;
+}
+
+.drop-indicator,
+.water-drop-indicator {
+  height: 46px;
+  background: var(--bg-espresso); /* Deep Espresso base #1D1914 */
+  border: 1px solid var(--border-panel);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 4px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.drop-indicator .drop-svg,
+.water-drop-indicator .drop-svg {
+  width: 13px;
+  height: 16px;
+  color: var(--neutral-earth); /* #463524 Burnished Earth */
+  transition: all 0.3s ease;
+}
+
+.drop-indicator .drop-num,
+.water-drop-indicator .drop-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-ash); /* #918878 Warm Ash */
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.drop-indicator.filled,
+.water-drop-indicator.filled {
+  background: linear-gradient(135deg, var(--bg-charcoal), var(--bg-espresso));
+  border-color: rgba(214, 179, 106, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 12px rgba(214, 179, 106, 0.12);
+}
+
+.drop-indicator.filled .drop-svg,
+.water-drop-indicator.filled .drop-svg {
+  color: var(--accent-gold); /* Muted Champagne fill #D6B36A */
+  filter: drop-shadow(0 0 3px rgba(231, 209, 154, 0.35)); /* Soft Ivory highlight #E7D19A */
+}
+
+.drop-indicator.filled .drop-num,
+.water-drop-indicator.filled .drop-num {
+  color: var(--text-ivory); /* Warm Ivory #F5F0E6 */
+  font-weight: 700;
+}
+
+/* Water Action Buttons - Premium Physical Controls */
+.water-actions-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.btn-water-add {
+  background: var(--bg-espresso);
+  color: var(--text-ivory);
+  border: 1px solid var(--border-button);
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  padding: 16px 36px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-water-add:hover {
+  background: var(--bg-charcoal);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-highlight);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 12px var(--accent-gold-glow);
+}
+
+.btn-water-add:active {
+  background: var(--neutral-walnut);
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.btn-water-undo {
+  background: var(--bg-espresso);
+  color: var(--text-stone);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  padding: 16px 24px;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+}
+
+.btn-water-undo:hover {
+  background: var(--bg-charcoal);
+  border-color: var(--accent-bronze);
+  color: var(--text-ivory);
+}
+
+/* ==========================================================================
+   7B. STEPS PAGE — 12,000 STEPS / DAY PROTOCOL
+   ========================================================================== */
+.steps-cinematic-card {
+  padding: 36px 20px 24px;
+  text-align: center;
+}
+
+.steps-circular-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.steps-circle-wrap {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.steps-ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.steps-ring-bg {
+  fill: none;
+  stroke: var(--neutral-walnut); /* Outer ring: Deep Walnut #30271D */
+  stroke-width: 10;
+}
+
+.steps-ring-fill {
+  fill: none;
+  stroke: url(#stepsGradRing); /* Progress ring: Champagne with highlight */
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 741.42;
+  stroke-dashoffset: 741.42;
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 10px rgba(214, 179, 106, 0.25));
+}
+
+.steps-circle-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.steps-number-huge {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9.5vw, 4.4rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--text-ivory); /* Center number: Warm Ivory */
+  letter-spacing: 0.02em;
+}
+
+.steps-number-huge .stat-unit {
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+}
+
+.steps-center-label {
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.steps-target-ratio {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-stone);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.steps-pct-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 8px;
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-panel);
+  padding: 4px 12px;
+  border-radius: 3px;
+}
+
+.steps-pct-badge span:first-child {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent-gold); /* Percentage: Champagne */
+}
+
+.steps-pct-badge .pct-sub {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  color: var(--text-stone);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.steps-remaining-status {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--text-ash);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* Step Input: Quick Actions */
+.steps-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.btn-step-action {
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-panel);
+  color: var(--text-ivory);
+  font-family: var(--font-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 12px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+}
+
+.btn-step-action:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: var(--bg-charcoal);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7), 0 0 10px var(--accent-gold-glow);
+}
+
+.btn-step-action:active {
+  background: var(--neutral-walnut);
+  transform: scale(0.98);
+}
+
+/* 7-Day Consistency Grid */
+.step-consistency-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.consistency-day-card {
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-panel);
+  padding: 12px 4px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.consistency-day-card.goal-hit {
+  border-color: var(--border-button);
+  background: var(--bg-charcoal);
+}
+
+.consistency-day-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-ash);
+  text-transform: uppercase;
+}
+
+.consistency-mark {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-ash);
+}
+
+.consistency-day-card.goal-hit .consistency-mark {
+  color: var(--accent-gold); /* Champagne completion, avoid neon green */
+  text-shadow: 0 0 10px rgba(214, 179, 106, 0.35);
+}
+
+.consistency-steps {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  color: var(--text-stone);
+}
+
+/* 7-Day History List */
+.step-refined-history {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.step-history-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-panel);
+  border-radius: 3px;
+  transition: border-color 0.25s ease;
+}
+
+.step-history-row:hover {
+  border-color: var(--accent-gold);
+}
+
+.step-hist-day {
+  font-family: var(--font-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-ivory);
+  width: 50px;
+}
+
+.step-hist-track {
+  flex: 1;
+  height: 3px;
+  background: var(--neutral-walnut); /* Deep Walnut */
+  border-radius: 1.5px;
+  margin: 0 14px;
+  overflow: hidden;
+}
+
+.step-hist-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-bronze), var(--accent-gold));
+  border-radius: 1.5px;
+  transition: width 0.6s ease;
+}
+
+.step-hist-val {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-ivory);
+  letter-spacing: 0.05em;
+  min-width: 60px;
+  text-align: right;
+}
+
+.step-hist-status {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-ash);
+  min-width: 55px;
+  text-align: right;
+  margin-left: 10px;
+}
+
+.step-hist-status.hit {
+  color: var(--accent-gold);
+  font-weight: 800;
+}
+
+/* Activity Page Transformation Status & Mini Step Progress */
+.pillar-mini-progress {
+  width: 100%;
+  height: 3px;
+  background: var(--neutral-walnut);
+  border-radius: 1.5px;
+  margin: 6px 0 4px;
+  overflow: hidden;
+}
+
+.pillar-mini-fill {
+  height: 100%;
+  background: var(--accent-gold);
+  border-radius: 1.5px;
+  transition: width 0.5s ease;
+}
+
+.activity-overview-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-panel);
+  border-radius: 3px;
+}
+
+.overview-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.overview-label {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--text-ash);
+  text-transform: uppercase;
+}
+
+.overview-val {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-ivory);
+}
+
+.overview-val.highlight {
+  color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   8. SECONDARY VIEWS, DRAWERS & MODALS (PRESERVING ALL CONTRACTS)
+   ========================================================================== */
+.arc-card {
+  background: linear-gradient(135deg, var(--bg-espresso), var(--bg-graphite));
+  border: 1px solid var(--border-panel);
+  border-radius: 4px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-tag {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.card-name {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-ivory);
+}
+
+.card-badge {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  background: rgba(214, 179, 106, 0.1);
+  border: 1px solid var(--border-panel);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.btn-secondary {
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-button);
+  color: var(--text-stone);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 10px 18px;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-charcoal);
+  border-color: var(--accent-gold);
+  color: var(--text-ivory);
+}
+
+.btn-generate-plate {
+  width: 100%;
+  background: var(--bg-espresso);
+  border: 1px solid var(--border-button);
+  color: var(--text-ivory);
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  padding: 14px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.btn-generate-plate:hover {
+  background: var(--bg-charcoal);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-highlight);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 12px var(--accent-gold-glow);
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(7, 7, 6, 0.88);
+  backdrop-filter: blur(16px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-sheet {
+  background: linear-gradient(135deg, var(--bg-espresso), var(--bg-graphite));
+  border: 1px solid var(--border-button);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 4px;
+  padding: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.modal-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-metallic);
+  padding-bottom: 12px;
+}
+
+.modal-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-ivory);
+}
+
+.btn-close-modal {
+  background: none;
+  border: none;
+  color: var(--text-ash);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.btn-close-modal:hover {
+  color: var(--text-ivory);
+}
+
+/* Toast Notice */
+.toast-notice {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(18, 17, 15, 0.95);
+  border: 1px solid var(--accent-gold);
+  color: var(--text-ivory);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 10px 22px;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(198, 161, 91, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 300;
+}
+
+.toast-notice.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   9. RESPONSIVE QUERIES
+   ========================================================================== */
+@media (min-width: 768px) {
+  .bottom-nav-bar {
+    display: none;
+  }
+
+  .app-shell {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-nav-bar {
+    display: none;
+  }
+
+  .app-header {
+    padding: 14px 18px;
+  }
+
+  .views-container {
+    padding: 18px;
+  }
+
+  .weight-stat-strip {
+    gap: 10px;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
+  }
+
+  .pillars-composition {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
